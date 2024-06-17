@@ -1,0 +1,797 @@
+
+ul{
+  padding:0;
+}
+*{
+  padding: 0;
+}
+*:focus{
+  outline: none;
+} 
+::-webkit-scrollbar{
+  width: 15px;
+}
+::-webkit-scrollbar-track{
+  background-color:rgb(128, 147, 240) ;
+}
+::-webkit-scrollbar-thumb{
+  background-color:var(--bs-danger); 
+  border-right: 5px solid rgb(128, 147, 240);
+  border-left: 5px solid rgb(128, 147, 240);
+}
+
+:root{
+  --transition: 0.6s;
+}
+
+/* starting intro */
+.intro{
+  color: black;
+  padding: 20px 0;
+  /* overflow: hidden; */
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 79px);
+  z-index: 1;
+}
+
+.intro .container > h1{
+  letter-spacing: 15px  ;
+}
+.intro .background{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #b25252, #5e5bb3);
+    z-index: -2;
+    opacity: 0;
+    animation: gradient 2s forwards;
+    top: 0;
+    left: 0;
+}
+
+.intro::after{
+  content: "";
+  position: absolute;
+  background: linear-gradient( to top,#eee, transparent);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+/* arrows of silder */
+.intro .arrow-left,
+.intro .arrow-right{
+  position: absolute;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 50%;
+  transform: translatey(-50%);
+  top: 50%;
+  cursor: pointer;
+  z-index: 3;
+  opacity: 0;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.intro .arrow-left{
+  left: -45px;
+  animation: arrow-left 1.5s forwards infinite alternate, opacity1 1s forwards;
+}
+
+.intro .arrow-right{
+  right: -45px;
+  animation: arrow-right 1.5s forwards infinite alternate, opacity1 1s forwards ;
+}
+
+.intro .arrow-right.disabled,
+.intro .arrow-left.disabled{
+  opacity: 0.3 !important;
+  cursor: not-allowed;
+  transition: 0.6s;
+}
+/* slides intro */
+.intro .holder > ul{
+  padding:0;
+  scroll-behavior: smooth;
+  overflow: hidden;
+  /* the following is important for responsive */
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  scroll-snap-type: x mandatory;
+}
+.intro ul li.slide{
+  /* width: 1296px;*/ /* this width doesn't work you must min-width:; */
+  scroll-snap-align: start; /*This make every slide to be start in the middle and when you drag the slider it will get to the start*/
+  padding: 30px;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+}
+@media(max-width:992px){
+  .intro ul li.slide{
+    flex-direction: column-reverse;
+  }
+}
+/*  */
+.intro .slider .one-image{
+  position: relative;
+}
+.intro .slider .one-image img,
+.intro .slider .video-slide video{
+  min-width: 450px;
+  max-width: 500px;
+  min-height: 320px;
+  max-height: 424px;
+  border-radius: 20px;
+  filter: drop-shadow(0px 4px 8px #00000075);
+  transition: 0.6s;
+
+}
+
+.intro .slider .two-image >a{
+  position: relative;
+}
+.intro .slider .two-image img{
+  max-width: calc(500px /2);
+  height: 284px;;
+  border-radius: 35px;
+  box-shadow: 0 4px 6px 4px #00000063;
+}
+.intro .slider .two-image span{
+  bottom: 3px;
+  left: 50%;
+  transform: translatex(-50%);
+  background-color: lightgray;
+  padding: 3px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  display: block;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.6s;
+  position: absolute;
+}
+.intro .slider .two-image a{
+  cursor: pointer;
+}
+.intro .slider .two-image a:hover span{
+  background-color: #dd7781;
+  color: white;
+  
+}
+
+.intro .slide3 a{
+text-decoration: none;
+font-weight: bold;
+font-size: 21px;
+color: #b46000;
+letter-spacing: 1px;
+}
+
+
+/*  starting intro second page*/
+.intro .slide1 .one-image img{
+  animation: move3d 1s forwards 1s;
+  opacity: 0;
+}
+
+.intro .text{
+  perspective: 500px;
+  /* text-align: center; */
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  /* background-color: green; */
+}
+
+.intro .slide1 .text  h1,
+.intro .slide1 .text h2,
+.intro .slide1 .text h3,
+.intro .slide1 .text h5, 
+.intro .slide1 .text p{
+  transform: translate3d(0px, 0px, 90px);
+  text-align: center;
+  opacity: 0;
+}
+
+.intro .slide1 .text h1{
+  animation: move3d 1s forwards   ;
+}
+.intro .slide1 .text h2{
+  animation: move3d 1s forwards 1s  ;
+}
+.intro .slide1 .text h3{
+  animation: move3d 1s forwards 1s  ;
+
+}
+.intro .text p{
+  animation: move3d 1s forwards 2s  ;
+}
+
+.intro button{
+  display: block;
+  margin: auto;
+  opacity: 0;
+  animation: move3d 1s 2s forwards;
+}
+
+.intro .social{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 25px;
+  perspective: 500px;
+  margin: 10px 0 0 0;
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+  top:101% ;
+}
+.intro .social a{
+  opacity: 0;
+  animation: move3d 1s forwards;
+  transform: translate3d(0,0,90px);
+  cursor: pointer;
+  background-color: #ddddff94;
+  width: 50px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: 0.6s;
+  border-radius: 8px;
+}
+
+.intro .social a:hover{
+  width: 60px;
+  height: 50px;
+  background-color: #ddddffeb;
+}
+
+.intro .social img{
+  width: 30px;
+  transition: 0.6s;
+}
+
+/*  starting intro second slide*/
+.intro .slide2 .techno{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0 0 0;
+}
+.intro .slide2 .techno img{
+  width: 54px;
+  height: 54px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 8px;
+}
+.intro .slide2 .techno div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro .slide2 .techno div.HTML5,
+.intro .slide2 .techno div.CSS3,
+.intro .slide2 .techno div.JS,
+.intro .slide2 .techno div.React{
+  font-weight: bold;
+}
+.intro .slide2 .techno div.HTML5{
+  color: #f06529;
+}
+.intro .slide2 .techno div.CSS3{
+  color: #2965f1;
+}
+.intro .slide2 .techno div.JS{
+  color:black ;
+}
+.intro .slide2 .techno div.React{
+  color:#009ac2 ;
+}
+
+.intro .slide2 .techno div.js span{
+  color: black;
+}
+/* slide of mentor */
+.intro .text .content{
+  gap: 20px;
+  position: relative;
+  width: 80%;
+}
+.intro .text .content ul{
+  padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 10px 13px;
+}
+
+/* .intro .text .text-code{
+  height: 100%;
+    width: 100%;
+    font-size: 264px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00000012;
+    background-color: lightblue;
+    top: 0;
+    left: 0;
+} */
+
+.intro .text .content::before{
+  content:"";
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  bottom: 0;
+}
+
+.intro .text .content::after{
+  content: "&";
+  font-size: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px dashed black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  
+  animation: changingColor 1s infinite linear    ;
+}
+@keyframes changingColor{
+  to{
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.intro .text .content h4{
+  font-weight: bold ;
+}
+.intro .text .content span{
+  font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.intro .text .content svg{
+  color: var(--bs-success);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* starting slide English */
+.intro .slide3 .one-image:hover img,
+.intro .slide5 .one-image:hover img{
+  filter: drop-shadow(0px 4px 8px #00000075) brightness(0.5);
+  transition: 0.6s;
+} 
+.intro .slide .one-image a{
+  cursor: pointer;
+  content: "Verify";
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+
+
+
+/* starting intro bullets */
+.intro .bullets{
+  perspective: 500px;
+  perspective-origin:bottom center;
+  bottom: -41px;
+  left: 50%;
+  transform: translatex(-50%);
+}
+.intro .bullets div{ /* this selector for noraml bullets we will get active bullet*/
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(191deg, #8f8bfd, #ff8385);  
+  border-radius: 50%;
+  cursor: pointer;
+  animation: move3d 1s forwards;
+  opacity: 0;
+  transform: translate3d(0,0, 90px);
+  transition: 0.6s;
+}
+.intro .bullets div.active{
+  background: linear-gradient(191deg, #6c69c1, #b65d5e); 
+  width: 25px;
+  height: 25px;
+}
+
+/* ending intro */
+
+
+/* starting projects */
+.projects{
+  overflow: hidden;
+  /* height: 100vh; */
+}
+    /* card-container */
+.projects .parent-projects {
+margin-top: 140px;
+  justify-content: space-evenly;
+  gap: 50px;
+  row-gap: 120px;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+.projects .card-container{
+  perspective: 1000px;
+  min-height: 350px;
+  box-shadow: 0px 8px 10px 1px rgba(128, 128, 128, 0.759);
+  border-radius: 8px;
+  transition: var(--transition);
+  flex: 1;
+  min-width: 300px;
+  max-width: 390px;
+  opacity: 0;
+  transform: translate3d(0,0, -50px);
+  animation: cards 1.5s forwards ;
+  position: relative;
+}
+.projects .card-container.hidden{
+  transition: var(--transition);
+  display: none;
+  animation:hidden-cards 1.5s forwards ;
+}
+    /* card-container */
+.projects .card{
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-style:preserve-3d ;
+  transition: 1s;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center ;
+  border-radius: 8px;
+  transform: rotateY(calc(360deg - 26deg));
+}
+.projects .face{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.projects .parent-projects .front{
+  background: linear-gradient(350deg, rgb(102, 131, 236) 5%, #ffae7c);
+  width: 100%;
+  padding: 5px;
+  transition: var(--transition);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1;
+}
+.projects .back{
+  /* background-color: green; */
+  transform: rotateY(180deg);
+  border-radius: 8px;
+}
+
+.projects .card-container:hover{
+  transform: translatey(-10px);
+  box-shadow: 0px 10px 25px 1px rgba(0, 0, 0, 0.608);
+}
+.projects .card-container:hover .card{
+  /* transform: rotateY(calc(360deg - 180deg)) ; */
+}
+
+.projects .card-container .content{
+  position: absolute;
+  /* background-color: #beea2d; */
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  border-radius: 8px;
+  /* background: linear-gradient(93deg, gray 60%, white );   */
+  overflow: hidden;
+  /* position: relative; */
+}
+
+.projects img{
+  width: 100%;
+  height: 50%;
+  border-radius: 8px;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.652));
+
+}
+.projects .parent-projects .text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* gap: 20px; */
+  padding: 17px;
+  width: 80%;
+  z-index: 1;
+}
+.projects .parent-projects p{
+  margin: 0;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+.projects .parent-projects span{
+  text-shadow: 0px 0px 8px #fcad7c, 0 0 12px #fcad7c, 0 0 18px #fcad7c;
+}
+.projects .card button{
+  outline: none;
+  border: none;
+  background: #66c4ec87;
+  box-shadow: 0px 0px 17px 2px rgba(255, 255, 255, 0.582);
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  color: white;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.projects .card button:hover{
+  /* background-color:red ; */
+  color: black;
+}
+        /* function pressing openCard */
+.projects .card.open-card{
+  transform: rotateY(calc(360deg - 180deg));
+}
+
+.projects .card + .content::before,/*next element (+) */
+.projects .card .back::before{ 
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-color: gray;
+  filter: blur(10px);
+}
+.projects .card + .content::before{
+  transition: var(--transition);  
+  content: "";
+}
+.projects .card.open-card + .content::before{
+  width: 20px;
+  left: 0;
+}
+.projects .card + .content::before{
+  content: "";
+  width: 80%;
+}
+.projects .card.open-card .back::before{
+  width: 11px;
+  right: 0;
+} 
+.projects .card.open-card .back .x-back{
+  position: absolute;
+  background-color: #ff5b27;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.projects .card.open-card .back .x-back:hover{
+  background-color: red;
+}
+
+.projects .parent-projects div.ui-works:hover{
+  /* background-color: rgb(239 165 121); */
+  /* left: 11% !important; */
+}
+
+.projects .ui{
+  top: -78px;
+  font-size: 187px;
+  right: -42px;
+  color: #00000038;
+  user-select: none;
+}
+/* ending projects */
+
+/* testing projects */
+  .parent{
+    perspective: 1000px;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    border: 2px solid green;
+  }
+  .box{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style:preserve-3d;
+    transition: 1s;
+    transform-origin: left;
+  }
+  .box .face{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    backface-visibility:hidden;
+  }
+  .box .back{
+    transform: rotateY(180deg);
+    background-color: green;
+  }
+  .box .front{
+    background-color: blue;
+  }
+  .parent:hover .box{
+    transform:rotateY(180deg);
+  }
+/* end testing projects */
+
+
+
+/* starting email */
+.email{
+  /* background-color: aqua; */
+  position: relative;
+}
+.email::before{
+content: "";
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 80%;
+height: 70%;
+background-color: rgba(144, 238, 144, 0.644);
+/* z-index: -1; */
+}
+
+
+
+
+
+
+
+/* the footer */
+.footer{
+  background-color: var(--main-color);
+  min-height: 50px;
+  color: white;
+}
+
+
+.react-logo{
+  width: fit-content;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.react-logo img + p{
+  color:white;
+}
+/* ending the footer */
+
+
+
+
+
+
+/* animation */
+
+@keyframes gradient {
+  80%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 1;
+    /* background: linear-gradient(92deg, #f01818, transparent); */
+  }
+}
+
+@keyframes arrow-left{
+  to{
+     left:-55px;
+   }
+
+}
+@keyframes arrow-right{
+  to{
+     right:-55px;
+   }
+}
+
+@keyframes move3d{
+  from{
+
+  }
+  to{
+    transform:translate3d(0,0,0px);
+    opacity:1;
+  }
+}
+
+@keyframes opacity1 {
+  to{
+    opacity: 1;
+  }
+}
+@keyFrames cards{
+  20% {
+    opacity: 1;
+  }
+  100%{
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  } 
+}
+@keyFrames hidden-cards{
+  20%{
+    opacity: 0;
+    transform:translate3d(0, 0, -50px)
+  }
+  100%{
+  }
+}
+
+/* @keyframes text-div{
+  to{
+    left: 115%;
+    opacity:1; 
+    height: 30%;
+  }
+} */
+
