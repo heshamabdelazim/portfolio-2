@@ -1,0 +1,61 @@
+.about img{
+    width: 140px;
+    height: 140px;
+}
+.about ul.parentUl{
+    padding: 0;
+    scroll-behavior: smooth;
+    /* display: flex; */
+    display: grid;   
+    grid-auto-flow: column;
+    grid-auto-columns:100% ;
+    transition: 1s;
+    overflow: hidden;
+    user-select:none;
+    cursor: grab;
+    scroll-snap-type: x mandatory; /* This to make children or slides in the middle but you can't see smoothly of dragging
+                        but when you dragging, (scroll-snap-type) will be none so you see the smooth of scroll */
+                        /* Also you need to go to every slide and put =>> scroll-snap-align:start; */
+}
+.about ul.parentUl.dragging{
+    cursor:grabbing;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.about :where(.text-test, .slide){
+    background-color: lightcoral;
+}
+.about .slide {
+    scroll-snap-align: start;
+    height: 342px;
+    /* background-color: var(--bs-warning); */
+    border-radius: 8px;
+    padding: 10px;
+    /* min-width: 1296px; */
+
+}
+/* .about li{
+    width:800px;
+} */
+
+/* arrows left and right in about section */
+.about .holder{
+    position: relative;
+}
+.about .arrow-left,
+.about .arrow-right{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    background-color: #d3d3d3c4;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.arrow-left{
+    left:-50px ;
+}
+.arrow-right{
+    right: -50px;
+}

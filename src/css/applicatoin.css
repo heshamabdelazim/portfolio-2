@@ -1,0 +1,27 @@
+.applications .section .section-ceontent{
+    height: 100vh;
+}
+.applications .section:nth-of-type(1) div .section-ceontent{
+    height: calc(100vh - 79px);
+    background-color: lightcoral;
+}
+.applications .section:nth-of-type(2) div .section-ceontent{
+    background-color: green;
+}
+.applications .section:nth-of-type(3) div .section-ceontent{
+    background-color: greenyellow;
+}
+.applications .section:nth-of-type(4) div .section-ceontent{
+    background-color: lightblue;
+}
+
+.section{
+    transition: 0.8s;
+    opacity: 0;
+    transform: translateX(-100%);
+    
+}
+.show{
+    opacity: 1;
+    transform: translateX(0);
+}

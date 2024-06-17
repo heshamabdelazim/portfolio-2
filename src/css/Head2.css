@@ -1,0 +1,26 @@
+.heading2 {
+    position: relative;
+    font-size: 2rem;
+    margin: 70px auto 10px;
+    text-transform: uppercase;
+    width: fit-content;
+    padding: 1.4rem 3rem;
+    border-radius: 50%;
+    box-shadow: 1px 20px 20px rgb(112, 112, 205);
+}
+
+.heading2 span{
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+}
+.heading2 .span1{
+    border-color:blue ;
+}
+.heading2 .span2{
+    border-color:red ;
+}
