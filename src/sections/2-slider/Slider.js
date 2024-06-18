@@ -58,7 +58,7 @@ export const Slider = () => {
   const mappingBullets = Slides().map((slide, index) => (
     <div
       id={index + 1}
-      className={index == 0 && "active"}
+      className={index === 0 ? "active" : ""}
       onClick={() => {
         scrolling(index + 1);
       }}

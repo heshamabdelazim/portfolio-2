@@ -122,7 +122,6 @@ export function Slides() {
                 src={typing}
                 draggable="false"
                 alt="Average rate of typing words is 82 WPM"
-                draggable="false"
               />
               <a
                 href="https://data.typeracer.com/pit/profile?user=read_palestine_history"
