@@ -12,7 +12,6 @@ import "../src/css/AboutUsSilder.css";
 // sectoins
 import { NavBar } from "./sections/1-navbar/NavBar";
 import { Slider } from "./sections/2-slider/Slider";
-import { AboutUs } from "./sections/About-us";
 // import AboutUs from "./sections/About-us";
 // import Home from "./sections/2-slider/Slider"; //k
 // import ReactLogo from "./components/ReactLogo";
