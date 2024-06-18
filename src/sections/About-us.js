@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 
 //pics
-import pic1 from "../images/Graduation of Science Certificate.jpg";
 import pic2 from "../images/military-servivce-modified.png";
 import pic3 from "../images/evidence 2.JPG";
 
@@ -28,11 +27,7 @@ export function AboutUs() {
   }, []);
 
   //we will object every pic then put it inside array then mapping inside that array
-  const card1 = {
-    image: pic1,
-    title: "Graduation cirtificate",
-    parag: `My GPA is 2.57 ${"good"}`,
-  };
+
   const card2 = {
     image: pic2,
     title: "military cirtificate",
@@ -46,7 +41,7 @@ export function AboutUs() {
       "To enhance Egnlish in writing, reading & translating over 20K words into Arabic.",
   };
   // the following array has objects to put it
-  const cardsArray = [card1, card2, card3];
+  const cardsArray = [card2, card3];
   //-------
   let puttingCards = cardsArray.map((card, index) => {
     return (
